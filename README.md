@@ -22,7 +22,13 @@ npm install
 cp .env.example .env
 ```
 
-**4. 起動**
+**4. パッケージインストール**
+
+```
+npm install
+```
+
+**5. 起動**
 
 ```
 npm run dev
