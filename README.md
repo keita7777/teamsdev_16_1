@@ -63,35 +63,9 @@ git checkout -b 'fe/fix/todotop_layout'
 git checkout -b 'fe/bug/todotop_layout'
 ```
 
-### 3. PullRequest
+### 3. Commit
 
-**1. プルリクエスト前の作業**
-
-プルリクエストを上げる前に必ず、自分が作業を行なっているブランチで `git pull origin main` を行うこと。<br/>
-もし、コンフリクトが発生したら、ローカル上で解決する、解決の仕方がわからない場合は、メンバーに相談すること。
-
-**2. `git pull origin main` を行なった後の作業**
-
-remote に変更があった場合は、 `git pull origin main` のコマンドを実行し、remote の変更を取り込む。<br/>
-package に更新がないか、確認するため、 `npm install` コマンドを実行する。<br/>
-`found 0 vulnerabilities` と表示されれば OK。
-
-**3. プルリクエスト作成時**
-
-- `PullRequestTemplate`を使ってください。
-- 作ったブランチから main ブランチへマージするプルリクを作ってください。
-- プルリクに issue 番号を紐付けてください。
-- レビュアーに assign つけてください。（複数つけても OK）
-- レビュー依頼の際は、PR 内にメンションコメント＆念の為 Slack にてレビュアーに声掛けお願いします。
-
-**4. マージ**
-
-- マージはスカッシュコミット（プルリク内のコミットを 1 つににまとめてコミット）でお願いします。
-  - マージの際に`Marge Pull Request`ではなく`Squash and merge`を選んでマージしてください。
-
-### Commit
-
-### コミットメッセージ
+#### コミットメッセージ
 
 - 日本語もしくは英語で端的に
 
@@ -101,6 +75,31 @@ package に更新がないか、確認するため、 `npm install` コマンド
 git commit -m 'Top画面 作成'
 git commit -m 'create top layout'
 ```
+
+### 4. PullRequest
+
+**1. プルリクエスト前の作業**
+
+プルリクエストを上げる前に必ず、自分が作業を行なっているブランチで `git pull origin main` を行うこと。<br/>
+もし、コンフリクトが発生したら、ローカル上で解決する、解決の仕方がわからない場合は、メンバーに相談する。
+
+**2. `git pull origin main` を行なった後の作業**
+
+package に更新がないか、確認するため、 `npm install` コマンドを実行する。<br/>
+`found 0 vulnerabilities` と表示されれば OK。
+
+**3. プルリクエスト作成時**
+
+- `PullRequestTemplate`を使ってください。
+- 作ったブランチから main ブランチへマージするプルリクを作ってください。
+- プルリクに issue 番号を紐付けてください。
+- レビュアーに Assignees つけてください。
+- レビュー依頼の際は、PR 内にメンションコメント＆Slack にてレビュアーに声掛けお願いします。
+
+**4. マージ**
+
+- マージはスカッシュコミット（プルリク内のコミットを 1 つににまとめてコミット）でお願いします。
+  - マージの際に`Marge Pull Request`ではなく`Squash and merge`を選んでマージしてください。
 
 ## 使用技術
 
