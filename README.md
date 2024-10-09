@@ -30,7 +30,7 @@ npm run dev
 
 ## 開発フロー
 
-### 1.Issue の作成
+### 1. Issue の作成
 
 1. Issue Template を元に Issue を作成してください。
 2. Assignees で誰が担当しているのかを選択してください。
@@ -42,7 +42,28 @@ npm run dev
   - 実装途中にバグを発見した際は作成してください。
   - 必要であれば、ミーティングで修正対応について議論いたします。
 
-### PullRequest
+### 2. Branch
+
+#### ブランチ命名規則（**プレフィックス**をつける）
+
+- fe: フロントエンド
+- be: バックエンド
+
+- feature: 機能追加
+- fix: コード修正（リファクタリング等）
+- bug: バグ修正
+
+※ 該当項目がない場合は適宜追加
+
+**＜例＞**
+
+```
+git checkout -b 'fe/feature/todotop_layout'
+git checkout -b 'fe/fix/todotop_layout'
+git checkout -b 'fe/bug/todotop_layout'
+```
+
+### 3. PullRequest
 
 **1. プルリクエスト前の作業**
 
@@ -67,24 +88,6 @@ package に更新がないか、確認するため、 `npm install` コマンド
 
 - マージはスカッシュコミット（プルリク内のコミットを 1 つににまとめてコミット）でお願いします。
   - マージの際に`Marge Pull Request`ではなく`Squash and merge`を選んでマージしてください。
-
-### Branch
-
-### ブランチ命名規則（**プレフィックス**をつける）
-
-- feature: 機能追加
-- fix: コード修正
-- bug: バグ修正
-
-※ 該当項目がない場合は適宜追加
-
-**＜例＞**
-
-```
-git checkout -b 'feature/todotop_layout'
-git checkout -b 'fix/todotop_layout'
-git checkout -b 'bug/todotop_layout'
-```
 
 ### Commit
 
