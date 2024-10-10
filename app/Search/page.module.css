@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 200px;
+  height: 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.7rem;
+  padding-left: 10px;
+  background-color: lightgrey;
+}
+
+.SearchIcon {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
