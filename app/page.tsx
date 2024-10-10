@@ -1,5 +1,8 @@
-import styles from "./page.module.css";
+import ArticleList from "@/components/ArticleList";
+// import styles from "./page.module.css";
 
 export default function Home() {
-  return <p>Hello World!</p>;
+  return <>
+  <ArticleList />
+</>
 }
