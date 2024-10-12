@@ -8,77 +8,47 @@
 git clone ~~~
 ```
 
-**2. パッケージインストール**
-
-clone したディレクトリへ移動
-
-```
-npm install
-```
-
-**3. 環境変数ファイルの作成**
+**2. 環境変数ファイルの作成**
 
 ```
 cp .env.example .env
 ```
 
-**4. パッケージインストール**
+**3. パッケージインストール**
 
 ```
 npm install
 ```
 
-**5. 起動**
+**4. 起動**
 
 ```
 npm run dev
 ```
 
-## 開発 Tips
+## 開発フロー
 
-### Issue
+### 1. Issue の作成
 
-- Issue にてタスクや問題を書いてください。
-- IssueTemplate を使ってください。（該当のテンプレートがない場合は作成してください）
-- 重複があると煩雑になるので、関連 Issue を探して#〇〇と参照を入れてください。
-- assign、tag をつけてください。
-- バグや表示崩れについては、Issue テンプレート`Bug report`で作成してください。
-  - 機能実装やテストで見つけ次第、どんどん作成してください。
-  - 必要であれば、MTG 内で修正対応について議論してください。
-- 作成した Issue を必ず MTG で、いつ対応するのかをチームで決めましょう。
+1. Issue Template を元に Issue を作成してください。
+2. Assignees で誰が担当しているのかを選択してください。
+3. Projects で GitHub Projects のタスク管理と紐付けを行なってください。
+4. Issue を必ずミーティングで、いつ対応するのかをチームで決めます。
 
-### PullRequest
+*`備考`*
+- バグや表示崩れについては、Bug report で作成してください。
+  - 実装途中にバグを発見した際は作成してください。
+  - 必要であれば、ミーティングで修正対応について議論いたします。
 
-**1. プルリクエスト前の作業**
+### 2. Branch
 
-プルリクエストを上げる前に必ず、自分が作業を行なっているブランチで `git pull origin main` を行うこと。<br/>
-もし、コンフリクトが発生したら、ローカル上で解決する、解決の仕方がわからない場合は、メンバーに相談すること。
+#### ブランチ命名規則（**プレフィックス**をつける）
 
-**2. `git pull origin main` を行なった後の作業**
-
-remote に変更があった場合は、 `git pull origin main` のコマンドを実行し、remote の変更を取り込む。<br/>
-package に更新がないか、確認するため、 `npm install` コマンドを実行する。<br/>
-`found 0 vulnerabilities` と表示されれば OK。
-
-**3. プルリクエスト作成時**
-
-- `PullRequestTemplate`を使ってください。
-- 作ったブランチから main ブランチへマージするプルリクを作ってください。
-- プルリクに issue 番号を紐付けてください。
-- レビュアーに assign つけてください。（複数つけても OK）
-- レビュー依頼の際は、PR 内にメンションコメント＆念の為 Slack にてレビュアーに声掛けお願いします。
-
-**4. マージ**
-
-- マージはスカッシュコミット（プルリク内のコミットを 1 つににまとめてコミット）でお願いします。
-  - マージの際に`Marge Pull Request`ではなく`Squash and merge`を選んでマージしてください。
-
-### Branch
-
-### ブランチ命名規則（**プレフィックス**をつける）
+- fe: フロントエンド
+- be: バックエンド
 
 - feature: 機能追加
-- fix: コード修正
+- fix: コード修正（リファクタリング等）
 - bug: バグ修正
 
 ※ 該当項目がない場合は適宜追加
@@ -86,14 +56,14 @@ package に更新がないか、確認するため、 `npm install` コマンド
 **＜例＞**
 
 ```
-git checkout -b 'feature/todotop_layout'
-git checkout -b 'fix/todotop_layout'
-git checkout -b 'bug/todotop_layout'
+git checkout -b 'fe/feature/todotop_layout'
+git checkout -b 'fe/fix/todotop_layout'
+git checkout -b 'fe/bug/todotop_layout'
 ```
 
-### Commit
+### 3. Commit
 
-### コミットメッセージ
+#### コミットメッセージ
 
 - 日本語もしくは英語で端的に
 
@@ -103,6 +73,31 @@ git checkout -b 'bug/todotop_layout'
 git commit -m 'Top画面 作成'
 git commit -m 'create top layout'
 ```
+
+### 4. PullRequest
+
+**1. プルリクエスト前の作業**
+
+プルリクエストを上げる前に必ず、自分が作業を行なっているブランチで `git pull origin main` を行うこと。<br/>
+もし、コンフリクトが発生したら、ローカル上で解決する、解決の仕方がわからない場合は、メンバーに相談する。
+
+**2. `git pull origin main` を行なった後の作業**
+
+package に更新がないか、確認するため、 `npm install` コマンドを実行する。<br/>
+`found 0 vulnerabilities` と表示されれば OK。
+
+**3. プルリクエスト作成時**
+
+- `PullRequestTemplate`を使ってください。
+- 作ったブランチから main ブランチへマージするプルリクを作ってください。
+- プルリクに issue 番号を紐付けてください。
+- レビュアーに Assignees つけてください。
+- レビュー依頼の際は、PR 内にメンションコメント＆Slack にてレビュアーに声掛けお願いします。
+
+**4. マージ**
+
+- マージはスカッシュコミット（プルリク内のコミットを 1 つににまとめてコミット）でお願いします。
+  - マージの際に`Marge Pull Request`ではなく`Squash and merge`を選んでマージしてください。
 
 ## 使用技術
 
