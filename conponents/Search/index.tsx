@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./page.module.css";
-import SearchIcon from "@mui/icons-material/Search";
+import styles from "./style.module.css";
+import { FaSearch } from "react-icons/fa";
 
 function Page() {
   return (
@@ -13,7 +13,7 @@ function Page() {
             placeholder="検索"
           ></input>
           <div>
-            <SearchIcon className={styles.SearchIcon} />
+            <FaSearch className={styles.SearchIcon} />
           </div>
         </div>
       </div>

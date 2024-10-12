@@ -1,9 +1,5 @@
-import Search from "./components/Search/page";
+import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <>
-      <Search />
-    </>
-  );
+  return <p>Hello World!</p>;
 }
