@@ -1,5 +1,12 @@
+import Header from "../components/Header";
 import styles from "./page.module.css";
 
 export default function Home() {
-  return <p>Hello World!</p>;
+ 
+  return (
+   <>
+  <Header />  
+  <p>Hello World!</p>
+  </> 
+);
 }
