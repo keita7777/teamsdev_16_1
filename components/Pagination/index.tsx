@@ -8,13 +8,14 @@ const Pagination = () => {
   return (
     <nav className={styles.paginationContainer}>
       <ul className={styles.paginationBlock}>
-        <li>
+        <li className={styles.prevpage}>
           <Link href="#" className={styles.paginationLiner}>
-            <FaArrowLeft size={10} /> Previous Page
+            <span>
+              <FaArrowLeft size={10} /> Previous Page
+            </span>
           </Link>
         </li>
-      </ul>
-      <ul className={styles.paginationBlockItem}>
+
         <li>
           <Link className={styles.paginationItem} href="#">
             1
@@ -65,10 +66,8 @@ const Pagination = () => {
             10
           </Link>
         </li>
-      </ul>
 
-      <ul className={styles.paginationBlock}>
-        <li>
+        <li className={styles.nextpage}>
           <Link className={styles.paginationLiner} href="#">
             Next Page <FaArrowRight size={10} />
           </Link>
