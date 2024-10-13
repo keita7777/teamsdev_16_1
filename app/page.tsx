@@ -2,11 +2,10 @@ import Header from "../components/Header";
 import styles from "./page.module.css";
 
 export default function Home() {
- 
   return (
-   <>
-  <Header />  
-  <p>Hello World!</p>
-  </> 
-);
+    <>
+      <Header />
+      <p>Hello World!</p>
+    </>
+  );
 }
