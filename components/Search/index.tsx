@@ -4,16 +4,12 @@ import { FaSearch } from "react-icons/fa";
 
 function Search() {
   return (
-        <div className={styles.search}>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="検索"
-          />
-          <div>
-            <FaSearch className={styles.SearchIcon} />
-          </div>
-        </div>
+    <div className={styles.search}>
+      <input className={styles.input} type="text" placeholder="検索" />
+      <div>
+        <FaSearch className={styles.SearchIcon} />
+      </div>
+    </div>
   );
 }
 
