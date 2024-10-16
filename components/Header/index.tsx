@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
-import Image from "next/image";
-import Icon from "./img/icon-create.svg";
+// import Image from "next/image";
+// import Icon from "./img/icon-create.svg";
+import { FaPenAlt } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -17,13 +18,7 @@ const Header = () => {
               </li>
               <li>
                 <Link href="/create">
-                  <Image
-                    src={Icon}
-                    className={styles.icon}
-                    alt="アイコン"
-                    width={40}
-                    height={40}
-                  />
+                  <FaPenAlt className={styles.icon} />
                   create
                 </Link>
               </li>
