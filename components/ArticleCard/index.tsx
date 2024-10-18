@@ -12,13 +12,7 @@ const ArticleCard = ({ data }: ArticleCardProps) => {
     <li className={styles.article}>
       <Link href={"/"}>
         <div className={styles.articleImageContainer}>
-          <Image
-            src={data.image_path}
-            alt={data.title}
-            fill
-            sizes="33vw"
-            className={styles.articleImage}
-          />
+          <Image src={data.image_path} alt={data.title} fill sizes="33vw" className={styles.articleImage} />
         </div>
         <div className={styles.articleInfo}>
           <div className={styles.articleInfoTop}>
