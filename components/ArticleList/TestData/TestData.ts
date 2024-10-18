@@ -21,8 +21,7 @@ export const TestData = [
   },
   {
     id: 3,
-    title:
-      "JavaScriptの非同期処理を完全理解するためのステップバイステップガイド",
+    title: "JavaScriptの非同期処理を完全理解するためのステップバイステップガイド",
     content:
       "JavaScriptにおける非同期処理の重要性とその使い方について詳しく解説します。特に、コールバック関数、Promise、async/awaitといった非同期処理の基本をマスターし、非同期処理の流れを制御するための実践的なテクニックを学びます。エラーハンドリングの方法や実際の開発シーンでの応用例も紹介し、非同期処理に対する理解を深めます。",
     category: "JavaScript",
@@ -63,8 +62,7 @@ export const TestData = [
   {
     id: 7,
     title: "サーバーレスアーキテクチャの基礎と応用",
-    content:
-      "サーバーレスアーキテクチャの基本概念から、実際にAWS Lambdaなどを利用した実装例までを紹介します。",
+    content: "サーバーレスアーキテクチャの基本概念から、実際にAWS Lambdaなどを利用した実装例までを紹介します。",
     category: "サーバー",
     image_path: ArticleImage,
     author: "田中太郎",
@@ -83,8 +81,7 @@ export const TestData = [
   {
     id: 9,
     title: "Next.jsでSEOに強いサイトを構築する方法",
-    content:
-      "Next.jsを使ったSSRとISRを活用したSEOに強いサイトの作成方法と、実際の活用事例を紹介します。",
+    content: "Next.jsを使ったSSRとISRを活用したSEOに強いサイトの作成方法と、実際の活用事例を紹介します。",
     category: "Next.js",
     image_path: ArticleImage,
     author: "田中太郎",
@@ -115,8 +112,7 @@ export const TestData = [
     title: "セキュリティを強化！フロントエンドのベストプラクティス",
     content:
       "フロントエンド開発において、セキュリティは重要な課題です。この記事では、クロスサイトスクリプティング（XSS）やクロスサイトリクエストフォージェリ（CSRF）などの一般的な攻撃手法に対する対策を解説します。さらに、CSP（コンテンツセキュリティポリシー）やセキュアな認証・認可の実装方法など、セキュリティを強化するための具体的な実装例を紹介します。",
-    category:
-      "セキュリティセキュリティセキュリティセキュリティセキュリティセキュリティセキュリティ",
+    category: "セキュリティセキュリティセキュリティセキュリティセキュリティセキュリティセキュリティ",
     image_path: ArticleImage,
     author: "田中太郎田中太郎田中太郎田中太郎田中太郎田中太郎",
     created_at: "a year ago",
