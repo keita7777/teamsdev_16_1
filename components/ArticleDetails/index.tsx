@@ -10,13 +10,7 @@ const ArticleDetails = () => {
     <div className={styles.articleDetails}>
       <div className={styles.blogTitle}>
         <h1>Blog Title</h1>
-        <Image
-          className={styles.profoleImage}
-          src={articleDetailsImage}
-          alt="profoleImage"
-          height={50}
-          width={50}
-        />
+        <Image className={styles.profoleImage} src={articleDetailsImage} alt="profoleImage" height={50} width={50} />
       </div>
       <div>
         <Image
