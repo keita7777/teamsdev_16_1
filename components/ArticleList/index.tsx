@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 // フロント構築時のテストデータ
 // バックエンド構築後はcomponents\ArticleList\TestDataごと削除する
-import { TestData } from "./TestData/TestData";
+import { TestData } from "@/DummyData/ArticleData";
 
 const ArticleList = () => {
   return (
