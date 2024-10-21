@@ -2,11 +2,11 @@ import Link from "next/link";
 import React from "react";
 import styles from "./styles.module.css";
 
-type props = {
+type Props = {
   isSignUp: boolean;
 };
 
-const AuthForm: React.FC<props> = ({ isSignUp }) => {
+const AuthForm: React.FC<Props> = ({ isSignUp }) => {
   return (
     <div className={styles.wrapper}>
       <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
