@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { TestData } from "../ArticleList/TestData/TestData";
-import ArticleImage from "../ArticleList/TestData/article-image.png";
+import { TestData } from "@/DummyData/ArticleData";
+import ArticleImage from "@/DummyData/article-image.png";
 
 type Post = {
   id: string;
