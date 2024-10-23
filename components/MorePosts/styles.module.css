@@ -1,0 +1,41 @@
+.wrap {
+  margin: 100px auto 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.title {
+  display: flex;
+  text-align: left;
+}
+
+.morePostsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 160px;
+}
+
+.postCard {
+  overflow: hidden;
+  width: 333px;
+}
+
+.postImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.postTitle {
+  font-size: 0.9rem;
+  padding: 10px 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .morePostsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
