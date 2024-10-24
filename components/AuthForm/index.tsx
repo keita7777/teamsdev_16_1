@@ -6,7 +6,7 @@ type Props = {
   isSignUp: boolean;
 };
 
-const AuthForm: React.FC<Props> = ({ isSignUp }) => {
+const AuthForm = ({ isSignUp }: Props) => {
   return (
     <div className={styles.wrapper}>
       <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
