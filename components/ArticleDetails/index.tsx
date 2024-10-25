@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./style.module.css";
 import articleDetailsImage from "@/DummyData/articleDetails-image.png";
-import { TestData } from "../ArticleList/TestData/TestData";
+import { TestData } from "@/DummyData/ArticleData";
 
 const ArticleDetails = () => {
   const articleData = TestData[2];
