@@ -1,6 +1,6 @@
 .paginationContainer {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 64px auto;
 }
 
 .paginationBlock {
@@ -56,4 +56,11 @@
 .paginationLiner:hover:after {
   width: 100%;
   border-bottom: solid 3px #000;
+}
+
+/* 768px以下の画面幅のスタイル */
+@media (max-width: 768px) {
+  .paginationContainer {
+    display: none;
+  }
 }
