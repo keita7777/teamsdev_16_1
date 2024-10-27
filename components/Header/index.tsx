@@ -18,7 +18,9 @@ const Header = () => {
               </li>
               <li>
                 <Link href="/create">
-                  <FaPenAlt className={styles.icon} />
+                  <span className={styles.icon}>
+                    <FaPenAlt size={15} />
+                  </span>
                   create
                 </Link>
               </li>
