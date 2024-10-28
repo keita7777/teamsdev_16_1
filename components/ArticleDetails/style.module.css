@@ -13,13 +13,9 @@
 }
 
 .profoleImage {
-  border-radius: 25px;
+  border-radius: 30px;
 }
 
 .blogImage {
-  margin-bottom: 20px;
-}
-
-.articleTitle {
   margin-bottom: 20px;
 }
