@@ -5,11 +5,11 @@ import Pagination from "@/components/Pagination";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
       <Search />
       <ArticleList />
       <Pagination />
-    </div>
+    </>
   );
 }
