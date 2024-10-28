@@ -9,8 +9,8 @@ const ArticleDetails = () => {
   return (
     <div className={styles.articleDetails}>
       <div className={styles.blogTitle}>
-        <h1>Blog Title</h1>
-        <Image className={styles.profoleImage} src={articleDetailsImage} alt="profoleImage" height={50} width={50} />
+        <h1>{articleData.title}</h1>
+        <Image className={styles.profoleImage} src={articleDetailsImage} alt="profoleImage" height={60} width={60} />
       </div>
       <div>
         <Image
@@ -18,10 +18,9 @@ const ArticleDetails = () => {
           src={articleData.image_path}
           alt={articleData.title}
           height={500}
-          width={740}
+          width={840}
         />
       </div>
-      <h2 className={styles.articleTitle}>{articleData.title}</h2>
       <p>{articleData.content}</p>
     </div>
   );

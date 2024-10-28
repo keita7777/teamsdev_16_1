@@ -1,5 +1,5 @@
 .articleDetails {
-  max-width: 800px;
+  max-width: 900px;
   margin: 30px auto;
   background-color: rgb(221, 220, 220);
   padding: 30px;
@@ -13,13 +13,9 @@
 }
 
 .profoleImage {
-  border-radius: 25px;
+  border-radius: 30px;
 }
 
 .blogImage {
-  margin-bottom: 20px;
-}
-
-.articleTitle {
   margin-bottom: 20px;
 }
