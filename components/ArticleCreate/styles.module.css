@@ -15,6 +15,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin: 20px 0;
+  width: 100%;
 }
 
 .fileWrapper {
@@ -93,4 +94,10 @@
   font-size: 1rem;
   width: 200px;
   border-radius: 5px;
+}
+
+.errorMessage {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: red;
 }
