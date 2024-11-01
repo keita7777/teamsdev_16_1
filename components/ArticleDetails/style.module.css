@@ -1,0 +1,21 @@
+.articleDetails {
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: rgb(221, 220, 220);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.blogTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profoleImage {
+  border-radius: 30px;
+}
+
+.blogImage {
+  margin-bottom: 20px;
+}

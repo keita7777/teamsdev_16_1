@@ -1,0 +1,29 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 64px auto;
+}
+
+.input {
+  width: 900px;
+  height: 74px;
+  border-radius: 40px;
+  border: none;
+  font-size: 1.5rem;
+  padding-left: 75px;
+  background-color: lightgrey;
+}
+
+.searchIcon {
+  margin-left: 27px;
+  margin-top: 5px;
+  font-size: 2rem;
+}
+
+/* 768px以下の画面幅のスタイル */
+@media (max-width: 768px) {
+  .input {
+    width: 80%;
+  }
+}
