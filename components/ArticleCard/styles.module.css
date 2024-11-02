@@ -85,3 +85,19 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+/* 960px以下の画面幅のスタイル */
+@media (max-width: 960px) {
+  .articleInfoTop,
+  .articleInfoMiddle {
+    flex-direction: column;
+  }
+}
+
+/* 768px以下の画面幅のスタイル */
+@media (max-width: 768px) {
+  li.article {
+    width: calc((100% - 44px) / 1);
+    margin: 0 auto;
+  }
+}
