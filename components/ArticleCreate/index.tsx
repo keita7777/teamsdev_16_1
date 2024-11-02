@@ -12,7 +12,7 @@ const ArticleCreate = () => {
     handleSubmit,
     register,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitted },
   } = useForm();
   const router = useRouter();
 
@@ -69,7 +69,7 @@ const ArticleCreate = () => {
         <input
           className={styles.titleInput}
           placeholder="Title"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isSubmitted}
           {...register("title", { required: "タイトルを入力してください" })}
         />
         {errors.title && <p className={styles.errorMessage}>{errors.title.message?.toString()}</p>}
@@ -79,7 +79,7 @@ const ArticleCreate = () => {
           className={styles.fileInput}
           type="file"
           accept="image/*"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isSubmitted}
           {...register("file", { required: "画像を選択してください" })}
         />
         <div className={styles.uploadContainer}>
@@ -95,12 +95,12 @@ const ArticleCreate = () => {
           {...register("content", { required: "記事内容を入力してください" })}
           className={styles.contentInput}
           placeholder="Text"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isSubmitted}
         ></textarea>
       </div>
       {errors.content && <p className={styles.errorMessage}>{errors.content.message?.toString()}</p>}
       <div className={styles.buttonWrapper}>
-        <button type="submit" className={styles.createButton} disabled={isSubmitting}>
+        <button type="submit" className={styles.createButton} disabled={isSubmitting || isSubmitted}>
           Create
         </button>
       </div>
