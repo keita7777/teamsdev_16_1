@@ -5,7 +5,7 @@ type Props = {
   id: InputHTMLAttributes<HTMLInputElement>["id"];
 };
 
-const InputImage = forwardRef<HTMLInputElement, Props>(function InputImage({ id, onChange }, ref) {
+const InputImage = forwardRef<HTMLInputElement, Props>(({ id, onChange }, ref) => {
   return <input ref={ref} id={id} type="file" accept="image/*" onChange={onChange} hidden />;
 });
 
