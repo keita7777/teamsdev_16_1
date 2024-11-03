@@ -1,6 +1,6 @@
 .container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
 }
@@ -22,24 +22,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   height: 300px;
   border-radius: 20px;
   margin-bottom: 20px;
 }
-
+.uploadImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%; 
+  border-radius: 20px;
+}
 .uploadContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.fileInput {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
 }
 
 .uploadIcon {
@@ -58,6 +54,16 @@
   font-weight: bold;
   pointer-events: none;
   line-height: 80px;
+}
+.cancelText {
+  background-color: rgb(6, 187, 247);
+  height: 60px;
+  width: 250px;
+  border-radius: 40px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 auto 10px;
+  border: none;
 }
 
 .contentWrapper {
