@@ -24,9 +24,6 @@ const ArticleCreate = () => {
   } = useForm();
   const router = useRouter();
 
-  console.log(fileInputRef);
-  console.log(imageFile);
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget?.files && e.currentTarget.files[0]) {
       const targetFile = e.currentTarget.files[0];
@@ -127,22 +124,6 @@ const ArticleCreate = () => {
           画像キャンセル
         </button>
       )}
-
-      {/* <div className={styles.fileWrapper}>
-        <input
-          className={styles.fileInput}
-          type="file"
-          accept="image/*"
-          disabled={isSubmitting}
-          {...register("file", { required: "画像を選択してください" })}
-        />
-        <div className={styles.uploadContainer}>
-          <span className={styles.uploadIcon}>
-            <HiArrowUp />
-          </span>
-          <span className={styles.uploadText}>Upload Image</span>
-        </div>
-      </div> */}
 
       {errors.file && <p className={styles.errorMessage}>{errors.file.message?.toString()}</p>}
       <div className={styles.contentWrapper}>
