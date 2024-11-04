@@ -1,20 +1,26 @@
+import { FormValues } from "@/type/articleCraeteFormType";
 import React, { forwardRef, InputHTMLAttributes } from "react";
+import { UseFormRegister } from "react-hook-form";
 
 type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   id: InputHTMLAttributes<HTMLInputElement>["id"];
   isSubmitting: boolean;
-  register: any;
+  register: UseFormRegister<FormValues>;
 };
 
-const InputImage = forwardRef<HTMLInputElement, Props>(({ id, onChange, isSubmitting, register }, ref) => {
-  const { onChange: registerOnChange, ...registerExceptOnchange } = register("file", {
+const InputImage = forwardRef<HTMLInputElement, Props>(({ id, onChange, isSubmitting, register }) => {
+  const {
+    onChange: registerOnChange,
+    ref: registerRef,
+    ...registerExceptOnchangeAndRef
+  } = register("file", {
     required: "画像を選択してください",
   });
 
   return (
     <input
-      ref={ref}
+      ref={registerRef}
       id={id}
       type="file"
       accept="image/*"
@@ -24,7 +30,7 @@ const InputImage = forwardRef<HTMLInputElement, Props>(({ id, onChange, isSubmit
       }}
       hidden
       disabled={isSubmitting}
-      {...registerExceptOnchange}
+      {...registerExceptOnchangeAndRef}
     />
   );
 });
