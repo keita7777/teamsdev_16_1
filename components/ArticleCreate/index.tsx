@@ -1,20 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { HiArrowUp } from "react-icons/hi";
 import { uploadImage } from "@/utils/supabase/uploadImage";
 import { FieldValues, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
+import InputImage from "./InputImage";
+import { useGetImageUrl } from "./hooks/useGetImageUrl";
+
+const IMAGE_ID = "imageId";
+
 const ArticleCreate = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const {
     handleSubmit,
     register,
     setError,
+    resetField,
     formState: { errors, isSubmitting },
   } = useForm();
   const router = useRouter();
+
+  console.log(fileInputRef);
+  console.log(imageFile);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget?.files && e.currentTarget.files[0]) {
+      const targetFile = e.currentTarget.files[0];
+      setImageFile(targetFile);
+    }
+  };
+
+  // state (imageFile)が更新されたら、画像URLを作成する。
+  const { imageUrl } = useGetImageUrl({ file: imageFile });
+  const handleClickCancelButton = () => {
+    setImageFile(null);
+    // useFormで管理しているfileをリセット
+    resetField("file");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   const createBlog = async (title: string, content: string, imagePath: string) => {
     try {
@@ -74,7 +103,32 @@ const ArticleCreate = () => {
         />
         {errors.title && <p className={styles.errorMessage}>{errors.title.message?.toString()}</p>}
       </div>
-      <div className={styles.fileWrapper}>
+      <label htmlFor={IMAGE_ID} className={styles.fileWrapper}>
+        {imageUrl && imageFile ? (
+          <img src={imageUrl} alt="アップロード画像" className={styles.uploadImage} />
+        ) : (
+          <div className={styles.uploadContainer}>
+            <span className={styles.uploadIcon}>
+              <HiArrowUp />
+            </span>
+            <span className={styles.uploadText}>Upload Image</span>
+          </div>
+        )}
+        <InputImage
+          ref={fileInputRef}
+          id={IMAGE_ID}
+          onChange={handleFileChange}
+          isSubmitting={isSubmitting}
+          register={register}
+        />
+      </label>
+      {imageUrl && imageFile && (
+        <button onClick={handleClickCancelButton} className={styles.cancelText}>
+          画像キャンセル
+        </button>
+      )}
+
+      {/* <div className={styles.fileWrapper}>
         <input
           className={styles.fileInput}
           type="file"
@@ -88,7 +142,8 @@ const ArticleCreate = () => {
           </span>
           <span className={styles.uploadText}>Upload Image</span>
         </div>
-      </div>
+      </div> */}
+
       {errors.file && <p className={styles.errorMessage}>{errors.file.message?.toString()}</p>}
       <div className={styles.contentWrapper}>
         <textarea
