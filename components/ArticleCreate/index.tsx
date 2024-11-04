@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 
 import InputImage from "./InputImage";
 import { useGetImageUrl } from "./hooks/useGetImageUrl";
+import { FormValues } from "@/type/articleCraeteFormType";
 
 const IMAGE_ID = "imageId";
 
@@ -21,7 +22,7 @@ const ArticleCreate = () => {
     setError,
     resetField,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm<FormValues>();
   const router = useRouter();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
