@@ -83,7 +83,7 @@ const ArticleCreate = () => {
 
     try {
       const fullPath = await uploadImage(imagePath);
-      createBlog(title, content, fullPath);
+      await createBlog(title, content, fullPath);
       router.push("/");
       router.refresh();
       return { message: "投稿完了" };
