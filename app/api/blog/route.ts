@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const { data, error } = await supabaseData.from("posts").select("*");
+    const { data, error } = await supabaseData.from("posts").select(`
+      id, title, content, image_path, created_at, updated_at,
+      users (name),
+      categories (name)
+    `);
 
     if (error) {
       throw error;
