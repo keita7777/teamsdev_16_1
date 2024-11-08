@@ -26,7 +26,6 @@ const formatDate = (dateString: string) => {
 };
 
 const ArticleCard = ({ data }: ArticleCardProps) => {
-  console.log(data);
   return (
     <li className={styles.article}>
       <Link href={"/"}>
