@@ -16,7 +16,7 @@ type Post = {
 };
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
 
   if (!res.ok) {
     throw new Error("データの取得に失敗しました");
