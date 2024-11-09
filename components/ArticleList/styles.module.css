@@ -13,6 +13,10 @@
   justify-content: space-around;
 }
 
+.error {
+  color: red;
+}
+
 /* 768px以下の画面幅のスタイル */
 @media (max-width: 768px) {
   .articleList {
