@@ -35,4 +35,5 @@ const InputImage = forwardRef<HTMLInputElement, Props>(({ id, onChange, isSubmit
   );
 });
 
+InputImage.displayName = "InputImage";
 export default InputImage;
