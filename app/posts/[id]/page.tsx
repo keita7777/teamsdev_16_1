@@ -11,10 +11,10 @@ import { Post } from "@/type/post";
 
 export default function Posts({ params }: { params: { id: string } }) {
   const [post, setPost] = useState<Post | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchPost = async () => {
+      const router = useRouter();
       try {
         const id = params.id;
 
@@ -23,13 +23,12 @@ export default function Posts({ params }: { params: { id: string } }) {
           router.replace("/404");
         }
         const result = await response.json();
-        console.log(result);
         if (!result.posts) {
           router.replace("/404");
         }
         setPost(result.posts);
       } catch (error) {
-        console.error(error);
+        throw error;
       }
     };
     fetchPost();
