@@ -1,38 +1,29 @@
-"use client";
 import ArticleDetails from "@/components/ArticleDetails";
 import Comments from "@/components/Comments";
 import Header from "@/components/Header";
 import MorePosts from "@/components/MorePosts";
 import { TestData } from "@/DummyData/ArticleData";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 import styles from "./styles.module.css";
-import { Post } from "@/type/post";
 
-export default function Posts({ params }: { params: { id: string } }) {
-  const [post, setPost] = useState<Post | null>(null);
+async function fetchPost(id: string) {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${id}`, {
+    cache: "no-store",
+  });
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const router = useRouter();
-      try {
-        const id = params.id;
+  if (!response.ok) {
+    return null;
+  }
+  const result = await response.json();
+  return result.posts;
+}
 
-        const response = await fetch(`/api/${id}`);
-        if (!response.ok) {
-          router.replace("/404");
-        }
-        const result = await response.json();
-        if (!result.posts) {
-          router.replace("/404");
-        }
-        setPost(result.posts);
-      } catch (error) {
-        throw error;
-      }
-    };
-    fetchPost();
-  }, []);
+export default async function Posts({ params }: { params: { id: string } }) {
+  const post = await fetchPost(params.id);
+
+  if (!post) {
+    notFound();
+  }
 
   return (
     <>
