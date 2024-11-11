@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
 import { signupFormType } from "@/type/authFormType";
 import { signUpWithEmail } from "@/utils/firebase/auth";
+import { useRouter } from "next/navigation";
 
 type Props = {
   isSignUp: boolean;
@@ -18,12 +19,37 @@ const AuthForm = ({ isSignUp }: Props) => {
     setError,
     formState: { errors, isSubmitting },
   } = useForm<signupFormType>();
+  const router = useRouter();
+
+  const createUser = async (id: string, name: string, email: string) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          name,
+          email,
+        }),
+      });
+      if (!response.ok) {
+        return { message: "エラーが発生しました" };
+      }
+    } catch (error) {
+      return { message: "エラーが発生しました", error };
+    }
+  };
 
   const onSubmit = async (data: signupFormType) => {
     const { name, email, password } = data;
     try {
       const response = await signUpWithEmail(email, password);
-      console.log(response.user.uid);
+      const userId = response.user.uid;
+      await createUser(userId, name, email);
+      router.push("/signin");
+      router.refresh();
     } catch (error: any) {
       if (
         error.message === "このメールアドレスは既に使用されています" ||
@@ -50,6 +76,7 @@ const AuthForm = ({ isSignUp }: Props) => {
             <input
               type="text"
               placeholder="Enter your name"
+              disabled={isSubmitting}
               {...register("name", { required: "名前を入力してください" })}
             />
             {errors.name && <p className={styles.errorMessage}>{errors.name.message?.toString()}</p>}
@@ -59,6 +86,7 @@ const AuthForm = ({ isSignUp }: Props) => {
         <input
           type="email"
           placeholder="Enter your email"
+          disabled={isSubmitting}
           {...register("email", {
             required: "メールアドレスを入力してください",
             pattern: {
@@ -72,13 +100,14 @@ const AuthForm = ({ isSignUp }: Props) => {
         <input
           type="password"
           placeholder="Enter your password"
+          disabled={isSubmitting}
           {...register("password", {
             required: "パスワードを入力してください",
             minLength: { value: 6, message: "パスワードは6文字以上にしてください" },
           })}
         />
         {errors.password && <p className={styles.errorMessage}>{errors.password.message?.toString()}</p>}
-        <button type="submit" className={styles.submitButton}>
+        <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
           {isSignUp ? "Sign Up" : "Sign In"}
         </button>
       </form>
