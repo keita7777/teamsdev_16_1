@@ -3,11 +3,11 @@ import Link from "next/link";
 import React from "react";
 import styles from "./styles.module.css";
 
-const page = () => {
+const NotFound = () => {
   return (
     <>
       <Header />
-      <div className={styles.container}>
+      <div className={styles.wrapper}>
         <h2>お探しのページは見つかりません。</h2>
         <Link href="/" className={styles.homeBtn}>
           Homeへ戻る
@@ -17,4 +17,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default NotFound;
