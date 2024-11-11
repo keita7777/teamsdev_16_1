@@ -107,9 +107,11 @@ const AuthForm = ({ isSignUp }: Props) => {
           })}
         />
         {errors.password && <p className={styles.errorMessage}>{errors.password.message?.toString()}</p>}
-        <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
-          {isSignUp ? "Sign Up" : "Sign In"}
-        </button>
+        <div className={styles.submitButtonContainer}>
+          <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+            {isSignUp ? "Sign Up" : "Sign In"}
+          </button>
+        </div>
       </form>
 
       {isSignUp ? (
