@@ -1,11 +1,13 @@
 import Image from "next/image";
 import styles from "./style.module.css";
 import articleDetailsImage from "@/DummyData/articleDetails-image.png";
-import { TestData } from "@/DummyData/ArticleData";
+import { Post } from "@/type/post";
 
-const ArticleDetails = () => {
-  const articleData = TestData[2];
+type ArticleDetailsProps = {
+  articleData: Post;
+};
 
+const ArticleDetails = ({ articleData }: ArticleDetailsProps) => {
   return (
     <div className={styles.articleDetails}>
       <div className={styles.blogTitle}>
