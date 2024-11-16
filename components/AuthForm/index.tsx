@@ -48,7 +48,7 @@ const AuthForm = ({ isSignUp }: Props) => {
       const response = await signUpWithEmail(email, password);
       const userId = response.user.uid;
       await createUser(userId, name, email);
-      router.push("/signin");
+      router.push("/");
       router.refresh();
     } catch (error: any) {
       if (
