@@ -6,8 +6,8 @@ export const fetchPosts = async (page: number = 1, pageSize: number = 9) => {
   const offset = (page - 1) * pageSize;
 
   const { data, error } = await supabase
-    .from('posts')
-    .select('*')
+    .from("posts")
+    .select("*")
     .range(offset, offset + pageSize - 1);
 
   if (error) {

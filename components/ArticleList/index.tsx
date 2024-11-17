@@ -39,7 +39,7 @@ const fetchPosts = async (): Promise<Post[]> => {
 const ArticleList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5; 
+  const postsPerPage = 5;
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -80,14 +80,9 @@ const ArticleList = () => {
         ))}
       </ul>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
     </div>
   );
 };
 
 export default ArticleList;
-

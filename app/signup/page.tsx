@@ -1,7 +1,7 @@
-import React from 'react';
-import Header from '../../components/Header';
-import SignUpForm from '../../components/AuthForm/SignUpForm';
-import styles from './styles.module.css';
+import React from "react";
+import Header from "../../components/Header";
+import SignUpForm from "../../components/AuthForm/SignUpForm";
+import styles from "./styles.module.css";
 
 const SignUpPage = () => {
   return (
@@ -15,5 +15,3 @@ const SignUpPage = () => {
 };
 
 export default SignUpPage;
-
-
