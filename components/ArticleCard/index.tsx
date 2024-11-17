@@ -28,7 +28,7 @@ const formatDate = (dateString: string) => {
 const ArticleCard = ({ data }: ArticleCardProps) => {
   return (
     <li className={styles.article}>
-      <Link href={"/"}>
+      <Link href={`/posts/${data.id}`}>
         <div className={styles.articleImageContainer}>
           <Image src={data.image_path} alt={data.title} fill sizes="33vw" className={styles.articleImage} />
         </div>
