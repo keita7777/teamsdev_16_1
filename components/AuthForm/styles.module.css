@@ -38,6 +38,12 @@
   background-color: #e3e3e3;
 }
 
+.submitButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .submitButton {
   color: #fff;
   font-weight: bold;
@@ -47,6 +53,7 @@
   padding: 12px 30px;
   border-radius: 20px;
   border: 0px;
+  cursor: pointer;
 }
 
 .comment {
@@ -57,4 +64,10 @@
 .comment span {
   color: #18a0fb;
   margin-left: 5px;
+}
+
+.errorMessage {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: red;
 }

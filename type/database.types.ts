@@ -85,7 +85,7 @@ export type Database = {
           email: string;
           id: string;
           name: string;
-          updated_at: string;
+          updated_at?: string;
         };
         Update: {
           created_at?: string;
@@ -95,6 +95,45 @@ export type Database = {
           updated_at?: string;
         };
         Relationships: [];
+      };
+      comments: {
+        Row: {
+          id: string;
+          user_id: string;
+          post_id: string;
+          comment: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          post_id: string;
+          comment: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          post_id?: string;
+          comment?: string;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "comments_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "comments_id_fkey";
+            columns: ["post_id"];
+            isOneToOne: false;
+            referencedRelation: "posts";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
     Views: {
