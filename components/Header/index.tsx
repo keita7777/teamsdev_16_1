@@ -25,7 +25,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className={`${styles.signIn} ${styles.pcOnly}`}>
-                <Link href="/signIn">sign in</Link>
+                <Link href="/signin">sign in</Link>
               </li>
             </ul>
           </nav>
