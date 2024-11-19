@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
 import styles from "./style.module.css";
-import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -12,7 +10,7 @@ type PaginationProps = {
   onPageChange: (page: number) => void;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
   return (
     <nav className={styles.paginationContainer}>
       <ul className={styles.paginationBlock}>
@@ -20,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           <button
             onClick={() => onPageChange(currentPage - 1)}
             className={styles.paginationLiner}
-            disabled={currentPage === 1}
+            disabled={currentPage <= 1}
           >
             <span>
               <FaArrowLeft size={10} /> Previous Page
@@ -32,7 +30,8 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           <li key={i}>
             <button
               onClick={() => onPageChange(i + 1)}
-              className={`${styles.paginationItem} ${currentPage === i + 1 ? styles.active : ""}`}
+              className={styles.paginationItem}
+              disabled={currentPage === i + 1}
             >
               {i + 1}
             </button>

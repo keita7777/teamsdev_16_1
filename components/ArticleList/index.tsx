@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import ArticleCard from "../ArticleCard";
 import Pagination from "../Pagination";
 import styles from "./styles.module.css";
@@ -16,38 +17,44 @@ type Post = {
   updated_at: string;
   categories: Category;
   users: User;
-};
+}
 
-const fetchPosts = async (): Promise<Post[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
+const fetchPosts = async (currentPage: number): Promise<{ posts: Post[], count: number }> => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog?page=${currentPage}`);
+
   if (!res.ok) {
     throw new Error("データの取得に失敗しました");
   }
-  const { posts }: { posts: Post[] } = await res.json();
-  return posts.map((item) => ({
-    id: item.id,
-    title: item.title,
-    content: item.content,
-    image_path: item.image_path,
-    created_at: item.created_at,
-    updated_at: item.updated_at,
-    categories: item.categories,
-    users: item.users,
-  }));
+
+  const { posts, count }: { posts: Post[], count: number } = await res.json();
+
+  return { posts, count };
 };
 
 const ArticleList = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5; 
-
+  const [postCount, setPostCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(Number(searchParams.get("page")) || 1);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const perPage = 6;
+  const totalPage = Math.ceil(postCount / perPage);
+
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", page.toString());
+    router.push(`?${params.toString()}`);
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const fetchedPosts = await fetchPosts();
-        setPosts(fetchedPosts);
+        const fetchedPosts = await fetchPosts(currentPage);
+        setPostCount(fetchedPosts.count);
+        setPosts(fetchedPosts.posts);
       } catch (error) {
         if (error instanceof Error) {
           setErrorMessage(error.message);
@@ -58,31 +65,21 @@ const ArticleList = () => {
     };
 
     getPosts();
-  }, []);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  }, [currentPage]);
 
   return (
     <div className={styles.articleListContainer}>
       {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
       <ul className={styles.articleList}>
-        {currentPosts.map((post) => (
+        {posts.map((post) => (
           <ArticleCard key={post.id} data={post} />
         ))}
       </ul>
 
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={totalPage}
         onPageChange={handlePageChange}
       />
     </div>
