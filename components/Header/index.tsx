@@ -48,8 +48,6 @@ const Header = () => {
 
               <li className={`${styles.signIn} ${styles.pcOnly}`}>
                 {isLogin ? (
-                  // テスト用に簡易的にログアウトも実装
-                  // 別のタスクでログアウト機能実装した場合この記述は不要
                   <button onClick={async () => await signOut(auth)} className={`${styles.signOut}`}>
                     log out
                   </button>
