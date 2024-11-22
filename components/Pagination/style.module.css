@@ -28,11 +28,13 @@
 .paginationItem:hover {
   border: solid 2px #000;
 }
+
 .prevpage {
   text-align: center;
   margin-right: 50px;
   width: 110px;
 }
+
 .nextpage {
   text-align: center;
   margin-left: 50px;
