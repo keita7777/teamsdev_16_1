@@ -5,7 +5,12 @@ export const GET = async (request: Request, { params }: { params: Promise<{ id: 
   try {
     const id = (await params).id;
     const supabaseData = await createClient();
-    const { data, error } = await supabaseData.from("posts").select("*").eq("id", id).single();
+    const { data, error } = await supabaseData.from("posts").select(`
+      *,
+      users (
+        profileImg
+      )
+    `).eq("id", id).single();
 
     if (error) {
       throw error;

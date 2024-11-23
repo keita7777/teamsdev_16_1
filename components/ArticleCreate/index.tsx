@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { HiArrowUp } from "react-icons/hi";
 import { uploadImage } from "@/utils/supabase/uploadImage";
@@ -11,6 +11,8 @@ import InputImage from "./InputImage";
 import { useGetImageUrl } from "./hooks/useGetImageUrl";
 import { FormValues } from "@/type/articleCraeteFormType";
 import { Post } from "@/type/post";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/utils/firebase/config";
 
 type EditPostProps = {
   editPost?: Post;
@@ -35,6 +37,16 @@ const ArticleCreate = ({ editPost }: EditPostProps) => {
     },
   });
   const router = useRouter();
+  const [loginUser, setLoginUser] = useState<string | null>(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoginUser(user.uid);
+      } else {
+        setLoginUser(null);
+      }
+    });
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget?.files && e.currentTarget.files[0]) {
@@ -68,7 +80,7 @@ const ArticleCreate = ({ editPost }: EditPostProps) => {
           image_path: imagePath,
 
           // 開発用記述
-          user_id: "1",
+          user_id: loginUser,
           category_id: "3f415bbf-5027-4600-938e-f30afc7a5367",
           // 開発用記述
         }),
@@ -118,6 +130,9 @@ const ArticleCreate = ({ editPost }: EditPostProps) => {
       if (editPost) {
         await uploadBlog(title, content, fullPath);
         router.back();
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
       } else {
         await createBlog(title, content, fullPath);
         router.push("/");
