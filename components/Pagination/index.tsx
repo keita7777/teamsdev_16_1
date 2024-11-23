@@ -1,76 +1,51 @@
-import React from "react";
+"use client";
+
 import styles from "./style.module.css";
-import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
-const Pagination = () => {
+type PaginationProps = {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+};
+
+const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
   return (
     <nav className={styles.paginationContainer}>
       <ul className={styles.paginationBlock}>
         <li className={styles.prevpage}>
-          <Link href="#" className={styles.paginationLiner}>
+          <button
+            onClick={() => onPageChange(currentPage - 1)}
+            className={styles.paginationLiner}
+            disabled={currentPage <= 1}
+          >
             <span>
               <FaArrowLeft size={10} /> Previous Page
             </span>
-          </Link>
+          </button>
         </li>
 
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            1
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            2
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            3
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            4
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            5
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            6
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            7
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            8
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            9
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.paginationItem} href="#">
-            10
-          </Link>
-        </li>
+        {[...Array(totalPages)].map((_, i) => (
+          <li key={i}>
+            <button
+              onClick={() => onPageChange(i + 1)}
+              className={styles.paginationItem}
+              disabled={currentPage === i + 1}
+            >
+              {i + 1}
+            </button>
+          </li>
+        ))}
 
         <li className={styles.nextpage}>
-          <Link className={styles.paginationLiner} href="#">
+          <button
+            onClick={() => onPageChange(currentPage + 1)}
+            className={styles.paginationLiner}
+            disabled={currentPage === totalPages}
+          >
             Next Page <FaArrowRight size={10} />
-          </Link>
+          </button>
         </li>
       </ul>
     </nav>
