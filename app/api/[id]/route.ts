@@ -5,12 +5,18 @@ export const GET = async (request: Request, { params }: { params: Promise<{ id: 
   try {
     const id = (await params).id;
     const supabaseData = await createClient();
-    const { data, error } = await supabaseData.from("posts").select(`
+    const { data, error } = await supabaseData
+      .from("posts")
+      .select(
+        `
       *,
       users (
         profileImg
       )
-    `).eq("id", id).single();
+    `,
+      )
+      .eq("id", id)
+      .single();
 
     if (error) {
       throw error;
@@ -26,8 +32,8 @@ export const PATCH = async (request: Request, { params }: { params: Promise<{ id
   try {
     const id = (await params).id;
     const supabaseData = await createClient();
-    const {title, image_path,content} = await request.json()
-    const { data, error } = await supabaseData.from("posts").update({title, image_path,content}).eq("id", id);
+    const { title, image_path, content } = await request.json();
+    const { data, error } = await supabaseData.from("posts").update({ title, image_path, content }).eq("id", id);
 
     if (error) {
       throw error;
@@ -38,4 +44,3 @@ export const PATCH = async (request: Request, { params }: { params: Promise<{ id
     return NextResponse.json({ message: "取得失敗", error }, { status: 500 });
   }
 };
-

@@ -9,5 +9,5 @@ export type Post = {
   user_id: string;
   users: {
     profileImg: string;
-  }
+  };
 };
