@@ -1,5 +1,5 @@
 export type FormValues = {
   title: string;
   content: string;
-  file: FileList;
+  file: FileList|null;
 };
