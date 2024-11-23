@@ -6,7 +6,7 @@ import { TestData } from "@/DummyData/ArticleData";
 import { notFound } from "next/navigation";
 import styles from "./styles.module.css";
 
-async function fetchPost(id: string) {
+export async function fetchPost(id: string) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${id}`, {
     cache: "no-store",
   });
