@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
 import { signupFormType } from "@/type/authFormType";
-import { signUpWithEmail } from "@/utils/firebase/auth";
+import { signInWithEmail, signUpWithEmail } from "@/utils/firebase/auth";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -44,21 +44,35 @@ const AuthForm = ({ isSignUp }: Props) => {
 
   const onSubmit = async (data: signupFormType) => {
     const { name, email, password } = data;
-    try {
-      const response = await signUpWithEmail(email, password);
-      const userId = response.user.uid;
-      await createUser(userId, name, email);
-      router.push("/");
-      router.refresh();
-    } catch (error: any) {
-      if (
-        error.message === "このメールアドレスは既に使用されています" ||
-        error.message === "無効なメールアドレスです"
-      ) {
-        setError("email", { message: error.message });
-      } else if (error.message === "パスワードは6文字以上にしてください") {
-        setError("password", { message: error.message });
-      } else {
+
+    if (isSignUp) {
+      // 新規ユーザー登録処理
+      try {
+        const response = await signUpWithEmail(email, password);
+        const userId = response.user.uid;
+        await createUser(userId, name, email);
+        router.push("/");
+        router.refresh();
+      } catch (error: any) {
+        if (
+          error.message === "このメールアドレスは既に使用されています" ||
+          error.message === "無効なメールアドレスです"
+        ) {
+          setError("email", { message: error.message });
+        } else if (error.message === "パスワードは6文字以上にしてください") {
+          setError("password", { message: error.message });
+        } else {
+          setError("root", { message: error.message });
+        }
+      }
+    } else {
+      // ログイン処理
+      try {
+        await signInWithEmail(email, password);
+
+        router.push("/");
+        router.refresh();
+      } catch (error: any) {
         setError("root", { message: error.message });
       }
     }
