@@ -5,6 +5,7 @@ import MorePosts from "@/components/MorePosts";
 import { TestData } from "@/DummyData/ArticleData";
 import { notFound } from "next/navigation";
 import styles from "./styles.module.css";
+import EditButton from "@/components/EditButton";
 
 export async function fetchPost(id: string) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${id}`, {
@@ -30,6 +31,8 @@ export default async function Posts({ params }: { params: { id: string } }) {
       <Header />
       <div className={styles.container}>
         {post ? <ArticleDetails articleData={post} /> : <p>Loading...</p>}
+
+        <div className={styles.editWrapper}>{post ? <EditButton articleData={post} /> : <p>Loading...</p>}</div>
         <MorePosts posts={TestData} />
         <Comments />
       </div>
