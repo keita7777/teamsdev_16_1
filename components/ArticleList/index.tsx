@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ArticleCard from "../ArticleCard";
 import Pagination from "../Pagination";
@@ -30,7 +30,7 @@ const fetchPosts = async (currentPage: number): Promise<{ posts: Post[]; count: 
   return { posts, count };
 };
 
-const ArticleList = () => {
+const ArticleListContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
@@ -75,11 +75,17 @@ const ArticleList = () => {
           <ArticleCard key={post.id} data={post} />
         ))}
       </ul>
-
       <Pagination currentPage={currentPage} totalPages={totalPage} onPageChange={handlePageChange} />
     </div>
   );
 };
 
-export default ArticleList;
+const ArticleList = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ArticleListContent />
+    </Suspense>
+  );
+};
 
+export default ArticleList;

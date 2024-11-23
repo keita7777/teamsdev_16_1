@@ -5,8 +5,8 @@ export const GET = async (request: NextRequest) => {
   const searchParams = request.nextUrl.searchParams;
   const currentPage = Number(searchParams.get("page")) - 1 || 0;
   const perPage = 6;
-  let firstRange = currentPage * perPage;
-  let lastRange = firstRange + (perPage - 1);
+  const firstRange = currentPage * perPage;
+  const lastRange = firstRange + (perPage - 1);
 try{
   const supabaseData = createClient();
   const { data, error, count } = await supabaseData.from("posts")
