@@ -1,5 +1,10 @@
 .container {
-  margin: 50px 15px 100px;
+  max-width: 900px;
+  margin: 50px auto 100px;
+}
+
+.editWrapper {
+  text-align: right;
 }
 
 /* not-found.tsx */

@@ -12,7 +12,13 @@ const ArticleDetails = ({ articleData }: ArticleDetailsProps) => {
     <div className={styles.articleDetails}>
       <div className={styles.blogTitle}>
         <h1>{articleData.title}</h1>
-        <Image className={styles.profoleImage} src={articleDetailsImage} alt="profoleImage" height={60} width={60} />
+        <Image
+          className={styles.profoleImage}
+          src={articleData.users.profileImg || articleDetailsImage}
+          alt="profoleImage"
+          height={60}
+          width={60}
+        />
       </div>
       <div>
         <Image

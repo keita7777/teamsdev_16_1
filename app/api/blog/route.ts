@@ -7,15 +7,19 @@ export const GET = async (request: NextRequest) => {
   const perPage = 6;
   const firstRange = currentPage * perPage;
   const lastRange = firstRange + (perPage - 1);
-try{
-  const supabaseData = createClient();
-  const { data, error, count } = await supabaseData.from("posts")
-  .select(`
+  try {
+    const supabaseData = createClient();
+    const { data, error, count } = await supabaseData
+      .from("posts")
+      .select(
+        `
       id, title, content, image_path, created_at, updated_at,
       users (name),
       categories (name)
-      `, { count: "exact" })
-  .range(firstRange, lastRange);
+      `,
+        { count: "exact" },
+      )
+      .range(firstRange, lastRange);
 
     if (error) {
       throw error;
@@ -25,7 +29,7 @@ try{
   } catch (error) {
     return NextResponse.json({ message: "取得失敗", error }, { status: 500 });
   }
-  };
+};
 
 export const POST = async (req: Request) => {
   try {
